@@ -1,0 +1,148 @@
+
+CREATE TABLE Endereço (
+    in_pv_id NUMERIC(9) UNIQUE,
+    in_pv_id_pessoa NUMERIC(9),
+    st_pv_rua VARCHAR(50),
+    in_pv_numero NUMERIC(5),
+    st_pv_cep VARCHAR(11),
+    st_pv_complemento VARCHAR(50),
+    st_pv_cidade VARCHAR(15),
+    st_pv_bairro NUMERIC(20),
+    PRIMARY KEY (in_pv_id, in_pv_id_pessoa)
+);
+
+CREATE TABLE Gerente (
+    in_pv_id NUMERIC(9) UNIQUE,
+    in_pv_pessoa NUMERIC(9),
+    in_pv_tipo NUMERIC(2),
+    PRIMARY KEY (in_pv_id, in_pv_pessoa)
+);
+
+CREATE TABLE Atendente (
+    in_pv_id NUMERIC(9) UNIQUE,
+    in_pv_pessoa NUMERIC(9),
+    in_pv_tipo NUMERIC(2),
+    PRIMARY KEY (in_pv_id, in_pv_pessoa)
+);
+
+CREATE TABLE Proficional  Estetico (
+    in_pv_id NUMERIC(9) UNIQUE,
+    in_pv_pessoa NUMERIC(9),
+    in_pv_tipo NUMERIC(2),
+    in_pv_procedimento_realiza NUMERIC(9),
+    PRIMARY KEY (in_pv_id, in_pv_pessoa, in_pv_procedimento_realiza)
+);
+
+CREATE TABLE Cliente (
+    in_pv_id NUMERIC(9) UNIQUE,
+    in_pv_pessoa NUMERIC(9),
+    in_pv_tipo NUMERIC(2),
+    in_convenio NUMERIC(2),
+    PRIMARY KEY (in_pv_id, in_pv_pessoa)
+);
+
+CREATE TABLE Dependente Cliente (
+    in_pv_id NUMERIC(9) UNIQUE,
+    in_pv_id_cliente NUMERIC(9),
+    in_pv_tipo NUMERIC(2),
+    PRIMARY KEY (in_pv_id, in_pv_id_cliente)
+);
+
+CREATE TABLE Procedimento Estetico (
+    in_pv_id NUMERIC(9) UNIQUE,
+    in_pv_id_profissional NUMERIC(9),
+    st_pv_nome VARCHAR(50),
+    st_pv_descricao VARCHAR(150),
+    PRIMARY KEY (in_pv_id, in_pv_id_profissional)
+);
+
+CREATE TABLE Dia Agendado (
+    in_pv_id NUMERIC(9) UNIQUE,
+    in_pv_id_cliente NUMERIC(9),
+    in_pv_id_proficional NUMERIC(9),
+    in_pv_id_procedimento_estetico NUMERIC(9),
+    dt_pv_data_marcada DATE,
+    tm_pv_horario_marcado TIME,
+    PRIMARY KEY (in_pv_id, in_pv_id_cliente, in_pv_id_proficional, in_pv_id_procedimento_estetico)
+);
+
+CREATE TABLE Agenda (
+    in_pv_id NUMERIC(9) UNIQUE,
+    in_pv_id_dia_agendado NUMERIC(9),
+    PRIMARY KEY (in_pv_id, in_pv_id_dia_agendado)
+);
+
+CREATE TABLE Debito (
+    in_pv_id NUMERIC(9) UNIQUE,
+    in_pv_cliente NUMERIC(9),
+    in_pv_id_procedimento NUMERIC(9),
+    fl_pv_valor_debito FLOAT,
+    bo_pv_pago BOOLEAN,
+    st_pv_forma_pagamento VARCHAR(8),
+    in_pv_dividido_vezes NUMERIC(3),
+    PRIMARY KEY (in_pv_id, in_pv_cliente, in_pv_id_procedimento)
+);
+ 
+ALTER TABLE Pessoa ADD CONSTRAINT FK_Pessoa_2
+    FOREIGN KEY (in_pv_id , ???)
+    REFERENCES Gerente (in_pv_pessoa, ???);
+ 
+ALTER TABLE Endereço ADD CONSTRAINT FK_Endereço_2
+    FOREIGN KEY (in_pv_id_pessoa???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Gerente ADD CONSTRAINT FK_Gerente_2
+    FOREIGN KEY (in_pv_pessoa???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Atendente ADD CONSTRAINT FK_Atendente_2
+    FOREIGN KEY (in_pv_pessoa???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Proficional  Estetico ADD CONSTRAINT FK_Proficional  Estetico_2
+    FOREIGN KEY (in_pv_pessoa???, in_pv_procedimento_realiza???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Proficional  Estetico ADD CONSTRAINT FK_Proficional  Estetico_3
+    FOREIGN KEY (in_pv_id, ???)
+    REFERENCES Procedimento Estetico (in_pv_id_profissional, ???);
+ 
+ALTER TABLE Cliente ADD CONSTRAINT FK_Cliente_2
+    FOREIGN KEY (in_pv_pessoa???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Cliente ADD CONSTRAINT FK_Cliente_3
+    FOREIGN KEY (in_pv_id, ???)
+    REFERENCES Dependente Cliente (in_pv_id_cliente, ???);
+ 
+ALTER TABLE Dependente Cliente ADD CONSTRAINT FK_Dependente Cliente_2
+    FOREIGN KEY (in_pv_pessoa???, in_pv_id_cliente???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Procedimento Estetico ADD CONSTRAINT FK_Procedimento Estetico_2
+    FOREIGN KEY (in_pv_id_profissional???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Procedimento Estetico ADD CONSTRAINT FK_Procedimento Estetico_3
+    FOREIGN KEY (in_pv_id, ???)
+    REFERENCES Proficional  Estetico (in_pv_procedimento_realiza, ???);
+ 
+ALTER TABLE Dia Agendado ADD CONSTRAINT FK_Dia Agendado_2
+    FOREIGN KEY (in_pv_id_cliente???, in_pv_id_proficional???, in_pv_id_procedimento_estetico???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Dia Agendado ADD CONSTRAINT FK_Dia Agendado_3
+    FOREIGN KEY (in_pv_id, ???)
+    REFERENCES Agenda (in_pv_id_dia_agendado, ???);
+ 
+ALTER TABLE Agenda ADD CONSTRAINT FK_Agenda_2
+    FOREIGN KEY (in_pv_id_dia_agendado???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Debito ADD CONSTRAINT FK_Debito_2
+    FOREIGN KEY (in_pv_cliente???, in_pv_id_procedimento???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Debito ADD CONSTRAINT FK_Debito_3
+    FOREIGN KEY (in_pv_id???)
+    REFERENCES ??? (???);

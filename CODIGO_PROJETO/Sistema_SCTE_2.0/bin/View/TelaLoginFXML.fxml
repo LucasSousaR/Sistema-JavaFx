@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaLoginController">
+   <children>
+      <AnchorPane layoutY="-8.0" prefHeight="499.0" prefWidth="845.0">
+         <children>
+            <ImageView fitHeight="507.0" fitWidth="1060.0" layoutX="-17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imag/Tela%20login.jpg" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="271.0" layoutY="97.0" opacity="0.87" prefHeight="309.0" prefWidth="346.0" style="-fx-background-color: #581845; -fx-background-radius: 25;">
+               <children>
+                  <Text fill="#fffdfd" layoutX="31.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#fffdfd" layoutX="31.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <PasswordField fx:id="txtSenha" layoutX="31.0" layoutY="163.0" prefHeight="26.0" prefWidth="262.0" promptText="Digite a Senha..." />
+                  <Button fx:id="btnSair" layoutX="46.0" layoutY="240.0" mnemonicParsing="false" onAction="#btnSairOnAction" prefHeight="32.0" prefWidth="89.0" text="Sair" />
+                  <Button fx:id="btnEntrar" layoutX="213.0" layoutY="240.0" mnemonicParsing="false" onAction="#btnEntrarOnActiion" prefHeight="32.0" prefWidth="89.0" text="Entrar" />
+                  <TextField fx:id="txtLogin" layoutX="31.0" layoutY="92.0" prefHeight="26.0" prefWidth="262.0" promptText="Digite a Login..." />
+               </children>
+            </AnchorPane>
+            <Text fill="#570606" layoutX="357.0" layoutY="450.0" onMouseClicked="#abrirCadastro" strokeType="OUTSIDE" strokeWidth="0.0" text="Criar Usuario">
+               <font>
+                  <Font name="Berlin Sans FB" size="32.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
